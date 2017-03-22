@@ -1,0 +1,41 @@
+<%-include include/header.html%>
+<%articles.forEach(function(article,index){%>
+<div class="col-md-4">
+	<div class="media" style="margin-bottom: 50px;" >
+		<a href="#" class="media-left">
+			<img src="<%=article.user.avatar%>" alt="..."/>
+		</a>
+		<div class="media-body">
+			<!--增加跳转，点击标题的时候跳转到详情页-->
+			 <a id="poster" href="/article/detail/<%=article.id%>">
+				<h4 class="media-heading"><%=article.title%></h4>
+			</a>
+			<div style="color: purple;"><%-article.content%></div>
+			<%if(article.poster){%>
+				<img style="width: 150px;height: 150px;" src="<%=article.poster%>"alt=""/>
+			<%}else{%>
+				<div style="width: 150px;height: 150px; border: none;"></div>
+			<%}%>	
+		</div>
+		<div class="media-bottom">
+			<span style="color: orange;">作者：<%=article.user.username%></span>
+			<span style="color: orange">时间：<%=article.createAt.toLocaleString()%></span>
+		</div>
+	</div>
+</div>	
+
+<%})%>
+<!--分页-->
+<div class="col-md-12">
+<nav>
+	<ul class="pagination">
+		<li><a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum>1)?pageNum-1:1%>&pageSize=<%=pageSize%>">&laquo;</a></li>
+		<%for(var i=1;i<=totalPage;i++){%>
+			<li class="<%=(pageNum==i)?"active":""%>"><a href="/?keyword=<%=keyword%>&pageNum=<%=i%>&pageSize=<%=pageSize%>"><%=i%></a></li>
+		<%}%>
+		<li><a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum<totalPage)?pageNum+1:totalPage%>&pageSize=<%=pageSize%>">&raquo;</a></li>
+	</ul>
+</nav>
+</div>
+
+<%-include include/footer.html%>
