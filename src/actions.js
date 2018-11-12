@@ -1,19 +1,7 @@
 /*
  * action 类型
  */
-const VisibilityFilter = {
-    visibilityFilter: 'SHOW_ALL',
-    todos: [
-        {
-            text: 'Consider using Redux',
-            completed: true,
-        },
-        {
-            text: 'Keep all state in a single tree',
-            completed: false
-        }
-    ]
-}
+
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
